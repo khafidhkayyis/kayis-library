@@ -74,6 +74,7 @@ function jumlahVolumeDuaKubus(a, b) {
 // ini menjalankan function
 // jumlahVolumeDuaKubus(8, 3);
 console.log(jumlahVolumeDuaKubus(8, 3));
+// nah disini kita bisa menambah parameter secara berulang tampa harus menulis kembali
 console.log(jumlahVolumeDuaKubus(10, 3));
 
 // jika ingin menggunakan alert tinggal ganti saja console nya
