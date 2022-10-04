@@ -2,7 +2,7 @@
 // di function
 
 // devinisi parameter
-// adalah variabel yang ditulis didalam kurung pada saat function dibuat, digunakan
+// adalah variabel yang ditulis didalam kurung () pada saat function dibuat, digunakan
 // untuk menampung nilai yang dikirimkan saat functin dipanggil.
 
 // argument
@@ -13,7 +13,7 @@
 // function tambah(a, b) {
 //   return a + b;
 // }
-// yang didalam kurung berisi a, b itu para meter
+// yang didalam kurung berisi a, b itu parameter
 
 // var coba = tambah(5, 10);
 // yang didalam kurung berisi 5, 10 itu argument
@@ -120,14 +120,14 @@
 
 //  contoh sudo variabel arguments yang ada di function javascript
 
-function tambah() {
-  var hasil = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    // hasil = hasil + arguments[i];
-    hasil += arguments[i];
-  }
-  return hasil;
-}
+// function tambah() {
+//   var hasil = 0;
+//   for (var i = 0; i < arguments.length; i++) {
+//     // hasil = hasil + arguments[i];
+//     hasil += arguments[i];
+//   }
+//   return hasil;
+// }
 
-var coba = tambah(1, 2, 3);
-console.log(coba);
+// var coba = tambah(1, 2, 3);
+// console.log(coba);
