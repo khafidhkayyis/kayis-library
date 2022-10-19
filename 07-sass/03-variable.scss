@@ -1,0 +1,35 @@
+// kita bisa menggunakan variabel scss jika ada warna/ font yang di panggil secara berulang
+:root{
+    --warna-satu:red;
+    --warna-dua:blue;
+    --warna-tiga:green;
+}
+
+body{
+    background-color: var(--warna-satu);
+}
+
+// jika variabel sass itu menggunakan tanda $
+
+// dalam variabel scss ada global dan local
+// jika kita ingin mengakses variabel local ke global caranya seperti ini
+
+body{
+    $primary-color: red !global;
+}
+
+h1{
+    color: $primary-color;
+}
+
+// disini kita bisa menggunaka map
+
+$alert:(
+    'danger': red,
+    'sucess':green,
+    'warning'orange,
+)
+
+// h1 {
+//     color: map-get($alert,'sucess')
+// }

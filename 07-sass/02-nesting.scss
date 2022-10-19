@@ -1,0 +1,46 @@
+// setelah download live sass complier
+//  yang nantinya akan membuat file css secara otomatis.
+
+// jika ingin file cssnya didalam folder
+// click preferences -> settings -> search live complier -> formats -> edit in settings.josn 
+// nanti ada tulisan savepatch yg nilainya null diganti dengan CSS
+// save..!
+
+// ada salah satu variabel sass yaitu & (parent selector)
+// mendandakan sebuah parent didalam child
+// contoh:
+.main{
+    .container & {
+        background-color: red;
+    }
+    font-size: large;
+}
+
+container & menandakan jika main adalah child nya .container
+
+& juga bisa digunakan untuk sudo class
+&:hover{
+    background-color: red;
+}
+
+kita juga bisa menjeneret nama dari parentnya
+
+.main{
+    &-heading{
+        color: rebeccapurple;
+    }
+    &-paraf{
+        color: aqua;
+    }
+}
+
+agar nestingnya tidak hilang di file css 
+
+.main{
+    & &-heading{
+        color: rebeccapurple;
+    }
+    & &-paraf{
+        color: aqua;
+    }
+}
