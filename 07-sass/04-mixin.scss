@@ -1,0 +1,155 @@
+// kumpulan style yg bisa dipanggil secara berulang oleh slector
+
+// cara mengimplementasikan ada 2 cara
+// 1. @mixin = ketika kita ingin membuat mixinnya
+// 2. @include = ketika kita ingin memanggil mixinnya 
+
+// langsung lanjut keprakteknya kita buat mixin sederhada
+
+@mixin inline-list{
+    margin:0 ;
+    padding:0 ;
+    list-style: none;
+    li{
+        display: inline-block;
+    }
+}
+
+.header ul{
+    @include inline-list();
+}
+
+// arguments pada mixin
+
+.container{
+    width: 600px;
+    height: 400px;
+    background-color: red;
+    .box{
+        width: 60px;
+        height: 60px;
+        background-color: wheat;
+        text-align: center;
+        line-height: 60px;
+    }
+}
+
+// kita sudah memiliki 3 box didlm container ,sekarang kita ingin membuat flex box yg nantinya bisa
+// kita include secara berulang
+
+@mixin flex-box{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.container{
+    @include flex-box();
+    width: 600px;
+    height: 400px;
+    background-color: red;
+    .box{
+        width: 60px;
+        height: 60px;
+        background-color: wheat;
+        text-align: center;
+        line-height: 60px;
+    }
+}
+
+// sekarang kita ingin menambahkan flex-direction menggunakan parameter()
+
+@mixin flex-box ($direction){
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: $direction;
+}
+
+.container{
+    @include flex-box(row-reverse);
+    width: 600px;
+    height: 400px;
+    background-color: red;
+    .box{
+        width: 60px;
+        height: 60px;
+        background-color: wheat;
+        text-align: center;
+        line-height: 60px;
+    }
+}
+
+// nilai argument yg kita masukan didlm include akan digunakan parameter yg ada di mixin dan 
+// diturunkan ke nilai variabel yg ada di dlm mixin
+
+// bagaimana jika kasusnya seperti ini argument yg ada di include ga kita tulis , 
+// penulisannya harus seperti ini
+
+@mixin flex-box ($direction :row){
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: $direction;
+}
+
+.container{
+    @include flex-box();
+    width: 600px;
+    height: 400px;
+    background-color: red;
+    .box{
+        width: 60px;
+        height: 60px;
+        background-color: wheat;
+        text-align: center;
+        line-height: 60px;
+    }
+}
+
+// jika ingin menimpa nilai default nya maka seperti ini 
+// jadi nilai default nya ada di mixin dan nilai yg menimpanya ada di include
+
+@mixin flex-box ($direction :row){
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: $direction;
+}
+
+.container{
+    @include flex-box(row-reverse);
+    width: 600px;
+    height: 400px;
+    background-color: red;
+    .box{
+        width: 60px;
+        height: 60px;
+        background-color: wheat;
+        text-align: center;
+        line-height: 60px;
+    }
+}
+
+// sekarang kita ingin mempunyain 2 argument
+
+@mixin flex-box ($direction :row, $space:center){
+    display: flex;
+    justify-content: $pace;
+    align-items:center;
+    flex-direction: $direction;
+}
+
+.container{
+    @include flex-box(row-reverse , space-around);
+    width: 600px;
+    height: 400px;
+    background-color: red;
+    .box{
+        width: 60px;
+        height: 60px;
+        background-color: wheat;
+        text-align: center;
+        line-height: 60px;
+    }
+}
