@@ -1,0 +1,92 @@
+// ada 2 buah keyword yaitu
+// 1. @import;
+// 2. @use ;
+
+// jadi mixin yg kita buat akan di jadikan external yang nantinya bisa di panggil
+// secara berulang walupun berbeda folder 
+// contoh
+// kita buat file baru didalam folder scss 
+// _mixin.scss 
+
+// simbol _ itu menandakan ini adalah bertipe parsial ini bukan file utama dari scssnya
+// simbol _ tidak akan melewari proses compilasi karna scss utama akan tau jika ada simbol _ itu adalah module
+
+// jika sudah membuat filenya _mixin.scss kita panggil di file utama yaitu dengan cara
+
+// @import'mixin';
+
+// dan di file utama kita bisa isi hasil import semuanya jadi dari header , section, footer itu kita bisa buat
+// secara external dan dibuatkan folder bernama module 
+
+// jangan lupa jika beda folder kita harus menuliskan nama foldernya
+// contoh
+// @import'module/mixin';
+// @import "module/header";
+
+// dalam pemanggilan import bisa di tulis secara paralel.
+// @import 'module/mixin','module/header';
+
+// di web resmi sass disitu menjelaskan kekuranga @import; karna terlalu gampang di akses
+// dan bisa digunakan secara berulang
+// dikahawatrikan akan bentrok jika digunakan oleh project besar
+// disarankan menggunakan @use
+
+// jika sudah terlanjur menggunakan import kita coba imigrasi ke use 
+// 1. open terminal 
+// 2. ketik sass $css/main.scss css/main.css
+//  jika di terjemahkan sass tolong ubah folder main.scss menjadi main.css 
+
+// jika sudah maka dartsassnya akan berjalan akan tetapi terjadi error
+// nah skrang kita ubah penggunakan import menjadi use 
+ 
+// sebelumnya kita sudah membuat file mixin yg isinya style yg bisa dipanggil secara berulang 
+// untuk penggunaan use cara memanggilnya seperti berikut 
+
+@use 'mixin';
+
+.header ul{
+    @include mixin.inline-list();
+    li{
+        background-color: black;
+        padding: 0.7em;
+        a{
+            color: wheat;
+        }
+    }
+}
+
+// kita harus memanggil name spacenya untuk menggunakan kode yg berada didlm file mixin 
+// dan cara penggunaan use adalah memanggil difile yg membutuhkan 
+
+// jika mamanggil file mixin jika beda folder?
+
+@use 'submodule/mixin';
+
+.header ul{
+    @include mixin.inline-list();
+    li{
+        background-color: black;
+        padding: 0.7em;
+        a{
+            color: wheat;
+        }
+    }
+}
+
+// kita harus menyesuaikan url foldernya
+// bagaimana jika kepanjangan ?
+
+@use 'submodule/mixin' as m;
+
+.header ul{
+    @include m.inline-list();
+    li{
+        background-color: black;
+        padding: 0.7em;
+        a{
+            color: wheat;
+        }
+    }
+} 
+
+// as disini sebagai alias jadi kalian tidak perlu kawatir lagi jika nama file/ foldernya banyak 
